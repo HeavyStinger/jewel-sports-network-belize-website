@@ -145,6 +145,13 @@ document.addEventListener("DOMContentLoaded", () => {
 			}
 		});
 
+		const hCaptchaResponse = form.querySelector("textarea[name=h-captcha-response]");
+		if (!hCaptchaResponse || !hCaptchaResponse.value) {
+			formIsValid = false;
+			statusEl.textContent = "Please complete the captcha before sending.";
+			statusEl.className = "contact-form__status contact-form__status--error";
+		}
+
 		if (!formIsValid) {
 			const firstInvalid = form.querySelector(".form-field--invalid input, .form-field--invalid textarea");
 			if (firstInvalid) {

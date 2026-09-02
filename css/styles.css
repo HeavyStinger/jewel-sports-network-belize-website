@@ -193,6 +193,7 @@ img {
 	flex: 1 1 0;
 	padding: clamp(0.6em, 2.5vw, 0.9em) clamp(0.85em, 4vw, 1.5em);
 	border: 2px solid var(--forest);
+	cursor: pointer;
 	border-radius: 3px;
 	font-family: "League Spartan", sans-serif;
 	font-weight: 700;
@@ -1055,6 +1056,11 @@ body.nav-open .site-nav .site-nav__list a {
 	border-color: var(--bright-dark);
 }
 
+.captcha-field {
+	max-width: 100%;
+	overflow-x: auto;
+}
+
 .contact-form__submit {
 	align-self: flex-start;
 	margin-top: 0.25rem;
@@ -1266,9 +1272,11 @@ body.nav-open .site-nav .site-nav__list a {
 .footer-bottom {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	gap: 0.5rem;
 	padding-top: clamp(1.5rem, 4vw, 2rem);
 	border-top: 1px solid rgba(13, 59, 31, 0.18);
+	text-align: center;
 }
 
 .footer-copyright {
