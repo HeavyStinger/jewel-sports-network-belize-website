@@ -1,0 +1,20 @@
+# Jewel Sports Network
+
+> Belize's first dedicated, professional-grade sports media network, providing photography, highlight reels, and full event coverage for athletes, leagues, and sponsors.
+
+Jewel Sports Network (JSPN) was founded by David Maheia to give Belizean sports the professional media treatment it deserves. JSPN covers games, tournaments, and athletes across Belize with a dedicated crew, not freelancers, delivering photography, video, and storytelling built specifically for the local sports scene. The site is a single page; the sections below are anchors on that one page, not separate URLs.
+
+## Sections
+
+- [About](https://jewelsportsnetwork.com/#about): JSPN's founding story, mission, and vision.
+- [Services](https://jewelsportsnetwork.com/#services): Professional sports photography, highlight reels, player and team spotlights, live event coverage, branded video packages, and behind-the-scenes content.
+- [Coverage](https://jewelsportsnetwork.com/#coverage): Past work, including full coverage of the NSC Super Nationals 2026 across 5 venues, 4 sports, and 7+ days.
+- [Partner](https://jewelsportsnetwork.com/#partner): Partnership information for leagues, federations, athletes, and sponsors.
+- [Contact](https://jewelsportsnetwork.com/#contact): Contact form and direct contact details.
+
+## Contact
+
+- Email: thejspnbz@gmail.com
+- Phone: +1 406 609 9715
+- Instagram: [@thejspn.bz](https://www.instagram.com/thejspn.bz/)
+- TikTok: [@the.jspn](https://www.tiktok.com/@the.jspn)

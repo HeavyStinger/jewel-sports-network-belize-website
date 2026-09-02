@@ -61,6 +61,13 @@
 
 html {
 	scroll-padding-top: var(--header-h);
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
 }
 
 body {
@@ -95,6 +102,7 @@ img {
 	position: relative;
 	overflow: hidden;
 	min-height: 100svh;
+	min-height: var(--hero-vh, 100svh);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -396,7 +404,7 @@ img {
 	z-index: 50;
 }
 
-.nav-toggle[aria-expanded="true"] ~ .site-nav {
+body.nav-open .site-nav {
 	visibility: visible;
 	transition: visibility 0s linear 0s;
 }
@@ -437,14 +445,14 @@ img {
 	transform: translateX(100%);
 }
 
-.nav-toggle[aria-expanded="true"] ~ .site-nav .site-nav__list li:nth-child(1) a { transition-delay: 0.05s; }
-.nav-toggle[aria-expanded="true"] ~ .site-nav .site-nav__list li:nth-child(2) a { transition-delay: 0.1s; }
-.nav-toggle[aria-expanded="true"] ~ .site-nav .site-nav__list li:nth-child(3) a { transition-delay: 0.15s; }
-.nav-toggle[aria-expanded="true"] ~ .site-nav .site-nav__list li:nth-child(4) a { transition-delay: 0.2s; }
-.nav-toggle[aria-expanded="true"] ~ .site-nav .site-nav__list li:nth-child(5) a { transition-delay: 0.25s; }
-.nav-toggle[aria-expanded="true"] ~ .site-nav .site-nav__list li:nth-child(6) a { transition-delay: 0.3s; }
+body.nav-open .site-nav .site-nav__list li:nth-child(1) a { transition-delay: 0.05s; }
+body.nav-open .site-nav .site-nav__list li:nth-child(2) a { transition-delay: 0.1s; }
+body.nav-open .site-nav .site-nav__list li:nth-child(3) a { transition-delay: 0.15s; }
+body.nav-open .site-nav .site-nav__list li:nth-child(4) a { transition-delay: 0.2s; }
+body.nav-open .site-nav .site-nav__list li:nth-child(5) a { transition-delay: 0.25s; }
+body.nav-open .site-nav .site-nav__list li:nth-child(6) a { transition-delay: 0.3s; }
 
-.nav-toggle[aria-expanded="true"] ~ .site-nav .site-nav__list a {
+body.nav-open .site-nav .site-nav__list a {
 	transform: translateX(0);
 }
 
@@ -471,9 +479,19 @@ img {
 	}
 
 	.site-nav {
-		position: static;
+		position: fixed;
 		inset: auto;
-		padding-top: 0;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 61;
+		height: var(--header-h);
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 var(--gutter);
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
 		visibility: visible;
 		transition: none;
 		overflow: visible;
@@ -508,16 +526,6 @@ img {
 	.site-nav__list a:hover {
 		color: var(--bright);
 	}
-}
-
-.section-eyebrow {
-	font-family: "League Spartan", sans-serif;
-	font-weight: 700;
-	font-size: var(--fs-caption);
-	text-transform: uppercase;
-	letter-spacing: 0.12em;
-	color: var(--bright-dark);
-	margin: 0 0 0.6rem;
 }
 
 .section-heading {
@@ -641,14 +649,24 @@ img {
 
 .camera-flash {
 	position: absolute;
-	width: 38vw;
-	height: 38vw;
-	max-width: 480px;
-	max-height: 480px;
+	width: 68vw;
+	height: 68vw;
+	max-width: 420px;
+	max-height: 420px;
 	border-radius: 50%;
-	background: radial-gradient(circle, var(--white) 0%, var(--white) 15%, transparent 70%);
+	background: radial-gradient(circle, var(--white) 0%, var(--white) 25%, transparent 70%);
 	opacity: 0;
 	animation: camera-flash 10s ease-in-out infinite;
+}
+
+@media (min-width: 700px) {
+	.camera-flash {
+		width: 38vw;
+		height: 38vw;
+		max-width: 480px;
+		max-height: 480px;
+		background: radial-gradient(circle, var(--white) 0%, var(--white) 15%, transparent 70%);
+	}
 }
 
 .camera-flash--1 {
@@ -881,6 +899,194 @@ img {
 		align-items: center;
 		justify-content: space-between;
 		gap: 2rem;
+	}
+}
+
+#contact {
+	background: var(--surface-page);
+	padding: clamp(3rem, 8vw, 6rem) var(--gutter);
+}
+
+.contact-inner {
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+.contact-layout {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2rem;
+}
+
+.contact-info__text {
+	font-size: var(--fs-base);
+	line-height: 1.7;
+	color: var(--ink-secondary);
+	max-width: 40ch;
+	margin: 0 0 1.5rem;
+}
+
+.contact-info__actions {
+	display: flex;
+	flex-direction: column;
+	gap: 0.85rem;
+	max-width: 300px;
+}
+
+.contact-info__actions .btn-ghost {
+	color: var(--ink);
+	border-color: var(--sticker-border);
+}
+
+.contact-info__actions .btn-ghost:hover {
+	color: var(--accent-text);
+	border-color: var(--accent-text);
+}
+
+.contact-form {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+	background: var(--surface-card);
+	border: 2px solid var(--sticker-border);
+	border-radius: 3px;
+	padding: clamp(1.25rem, 4vw, 2rem);
+	box-shadow: 4px 4px 0 var(--bright);
+}
+
+.form-honeypot {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+.form-field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+}
+
+.form-field label {
+	font-family: "League Spartan", sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: clamp(0.75rem, 2vw, 0.85rem);
+	letter-spacing: 0.03em;
+	color: var(--ink);
+}
+
+.form-field--required label::after {
+	content: "*";
+	color: var(--rec-red);
+	margin-left: 0.3em;
+}
+
+.form-field input,
+.form-field textarea {
+	font-family: "Roboto", system-ui, sans-serif;
+	font-size: var(--fs-base);
+	color: var(--ink);
+	background: var(--surface-page);
+	border: 2px solid var(--border-strong);
+	border-radius: 3px;
+	padding: 0.65em 0.85em;
+	width: 100%;
+	transition: border-color 0.15s ease, outline-color 0.15s ease;
+}
+
+.form-field textarea {
+	resize: vertical;
+	min-height: 7rem;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+	color: var(--ink-muted);
+	opacity: 1;
+}
+
+.form-field input:focus-visible,
+.form-field textarea:focus-visible {
+	outline: 3px solid var(--bright-dark);
+	outline-offset: 2px;
+	border-color: var(--bright-dark);
+}
+
+.form-field--invalid input,
+.form-field--invalid textarea {
+	border-color: var(--rec-red);
+}
+
+.form-field__error {
+	font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+	line-height: 1.4;
+	color: var(--rec-red);
+	margin: 0;
+	min-height: 1.4em;
+}
+
+.phone-input {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.phone-input__code {
+	flex: 0 0 auto;
+	font-family: "Roboto", system-ui, sans-serif;
+	font-size: var(--fs-base);
+	color: var(--ink);
+	background: var(--surface-page);
+	border: 2px solid var(--border-strong);
+	border-radius: 3px;
+	padding: 0.65em 0.4em;
+}
+
+.phone-input__number {
+	flex: 1 1 auto;
+	width: auto;
+	min-width: 0;
+}
+
+.phone-input__code:focus-visible {
+	outline: 3px solid var(--bright-dark);
+	outline-offset: 2px;
+	border-color: var(--bright-dark);
+}
+
+.contact-form__submit {
+	align-self: flex-start;
+	margin-top: 0.25rem;
+}
+
+.contact-form__status {
+	font-size: var(--fs-base);
+	margin: 0;
+	min-height: 1.5em;
+}
+
+.contact-form__status--success {
+	color: var(--bright-dark);
+	font-weight: 700;
+}
+
+.contact-form__status--error {
+	color: var(--rec-red);
+	font-weight: 700;
+}
+
+@media (min-width: 900px) {
+	.contact-layout {
+		grid-template-columns: 0.85fr 1.15fr;
+		align-items: start;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.form-field input,
+	.form-field textarea {
+		transition: none;
 	}
 }
 

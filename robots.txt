@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jewelsportsnetwork.com/sitemap.xml
