@@ -1459,7 +1459,6 @@ body.lightbox-open {
 }
 
 .footer-ticker {
-	position: relative;
 	background: var(--bright);
 	overflow: hidden;
 	white-space: nowrap;
@@ -1474,55 +1473,8 @@ body.lightbox-open {
 	animation: footer-ticker 26s linear infinite;
 }
 
-.footer-ticker__track.is-paused {
+.footer-ticker:hover .footer-ticker__track {
 	animation-play-state: paused;
-}
-
-.footer-ticker__pause {
-	position: absolute;
-	top: 50%;
-	right: var(--gutter);
-	transform: translateY(-50%);
-	z-index: 1;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 26px;
-	height: 26px;
-	background: var(--forest);
-	color: var(--cream);
-	border: 2px solid var(--forest-700);
-	border-radius: 3px;
-	padding: 0;
-	cursor: pointer;
-	transition: background-color 0.15s ease;
-}
-
-.footer-ticker__pause:hover {
-	background: var(--forest-700);
-}
-
-.footer-ticker__pause:focus-visible {
-	outline: 3px solid var(--forest-700);
-	outline-offset: 2px;
-}
-
-.footer-ticker__play-icon {
-	display: none;
-}
-
-.footer-ticker__pause[aria-pressed="true"] .footer-ticker__pause-icon {
-	display: none;
-}
-
-.footer-ticker__pause[aria-pressed="true"] .footer-ticker__play-icon {
-	display: block;
-}
-
-@media (prefers-reduced-motion: reduce) {
-	.footer-ticker__pause {
-		display: none;
-	}
 }
 
 .footer-ticker__item {

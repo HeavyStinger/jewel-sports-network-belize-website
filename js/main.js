@@ -30,21 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		copyrightYear.textContent = new Date().getFullYear();
 	}
 
-	const tickerTrack = document.querySelector(".footer-ticker__track");
-	const tickerPauseButton = document.querySelector(".footer-ticker__pause");
-
-	if (tickerTrack && tickerPauseButton) {
-		const pauseLabel = tickerPauseButton.querySelector(".footer-ticker__pause-label");
-
-		tickerPauseButton.addEventListener("click", () => {
-			const isPaused = tickerTrack.classList.toggle("is-paused");
-			tickerPauseButton.setAttribute("aria-pressed", String(isPaused));
-			if (pauseLabel) {
-				pauseLabel.textContent = isPaused ? "Resume scrolling ticker" : "Pause scrolling ticker";
-			}
-		});
-	}
-
 	const navToggle = document.querySelector(".nav-toggle");
 	const siteNav = document.querySelector(".site-nav");
 
