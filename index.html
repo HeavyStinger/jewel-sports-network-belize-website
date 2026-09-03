@@ -5,7 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Jewel Sports Network | Belize's Home for Sports!</title>
 	<meta name="description" content="Belize's first dedicated, professional-grade sports media network: photography, highlight reels, and full event coverage for athletes, leagues, and sponsors.">
-	<meta name="theme-color" content="#0D3B1F">
+	<meta name="theme-color" content="#FCF4CB" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="#081A10" media="(prefers-color-scheme: dark)">
 	<link rel="canonical" href="https://jewelsportsnetwork.com/">
 
 	<link rel="icon" href="favicon.ico" sizes="any">
@@ -29,6 +30,9 @@
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preconnect" href="https://www.youtube.com">
+	<link rel="preconnect" href="https://www.instagram.com">
+	<link rel="preconnect" href="https://web3forms.com">
 	<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700;800&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/styles.css">
 	<script src="js/main.js" defer></script>
@@ -45,7 +49,7 @@
 		"areaServed": "BZ",
 		"sameAs": [
 			"https://www.instagram.com/thejspn.bz/",
-			"https://www.facebook.com/thejewelsportsnetwork",
+			"https://www.facebook.com/profile.php?id=61590212313164",
 			"https://www.youtube.com/@TheJSPN",
 			"https://www.tiktok.com/@the.jspn"
 		],
@@ -60,6 +64,7 @@
 	</script>
 </head>
 <body>
+	<a class="skip-link" href="#hero">Skip to content</a>
 	<header class="site-header">
 		<div class="site-header__inner">
 			<a class="site-header__logo" href="#hero" aria-label="Jewel Sports Network, back to top">
@@ -84,17 +89,17 @@
 			<li><a href="#contact">Contact</a></li>
 		</ul>
 	</nav>
-	<section id="hero">
+	<section id="hero" tabindex="-1">
 		<h1 class="sr-only">Jewel Sports Network: Belize's Home for Sports</h1>
 		<div class="hero-bg" aria-hidden="true">
 			<div class="hero-bg__panel">
-				<img src="assets/images/hero/hero-basketball.webp" alt="" width="1200" height="1800">
+				<img src="assets/images/hero/hero-basketball.webp" alt="" width="1200" height="1800" fetchpriority="high">
 			</div>
 			<div class="hero-bg__panel">
-				<img src="assets/images/hero/hero-boxing.webp" alt="" width="1200" height="800">
+				<img src="assets/images/hero/hero-boxing.webp" alt="" width="1200" height="800" fetchpriority="high">
 			</div>
 			<div class="hero-bg__panel">
-				<img src="assets/images/hero/hero-runner.webp" alt="" width="1200" height="1500">
+				<img src="assets/images/hero/hero-runner.webp" alt="" width="1200" height="1500" fetchpriority="high">
 			</div>
 		</div>
 		<div class="hero-bg-tint" aria-hidden="true"></div>
@@ -288,13 +293,13 @@
 					</label>
 					<div class="form-field form-field--required">
 						<label for="contact-name">Full Name</label>
-						<input type="text" id="contact-name" name="name" placeholder="e.g. Jane Smith" minlength="2" aria-describedby="contact-name-error" required>
-						<p class="form-field__error" id="contact-name-error"></p>
+						<input type="text" id="contact-name" name="name" placeholder="e.g. Jane Smith" minlength="2" autocomplete="name" aria-describedby="contact-name-error" required>
+						<p class="form-field__error" id="contact-name-error" aria-live="polite"></p>
 					</div>
 					<div class="form-field form-field--required">
 						<label for="contact-email">Email</label>
-						<input type="email" id="contact-email" name="email" placeholder="e.g. jane@email.com" aria-describedby="contact-email-error" required>
-						<p class="form-field__error" id="contact-email-error"></p>
+						<input type="email" id="contact-email" name="email" placeholder="e.g. jane@email.com" autocomplete="email" spellcheck="false" aria-describedby="contact-email-error" required>
+						<p class="form-field__error" id="contact-email-error" aria-live="polite"></p>
 					</div>
 					<div class="form-field">
 						<label for="contact-phone">Phone</label>
@@ -342,14 +347,14 @@
 								<option value="234">🇳🇬 NG +234</option>
 								<option value="971">🇦🇪 AE +971</option>
 							</select>
-							<input type="tel" class="phone-input__number" id="contact-phone" placeholder="600 0000" aria-describedby="contact-phone-error">
+							<input type="tel" class="phone-input__number" id="contact-phone" placeholder="600 0000" autocomplete="tel" aria-describedby="contact-phone-error">
 						</div>
-						<p class="form-field__error" id="contact-phone-error"></p>
+						<p class="form-field__error" id="contact-phone-error" aria-live="polite"></p>
 					</div>
 					<div class="form-field form-field--required">
 						<label for="contact-message">Message</label>
-						<textarea id="contact-message" name="message" rows="5" placeholder="Tell us about your event, team, or partnership idea" minlength="10" aria-describedby="contact-message-error" required></textarea>
-						<p class="form-field__error" id="contact-message-error"></p>
+						<textarea id="contact-message" name="message" rows="5" placeholder="Tell us about your event, team, or partnership idea…" minlength="10" aria-describedby="contact-message-error" required></textarea>
+						<p class="form-field__error" id="contact-message-error" aria-live="polite"></p>
 					</div>
 					<div class="captcha-field">
 						<div class="h-captcha" id="contact-captcha" data-captcha="true"></div>
@@ -364,7 +369,10 @@
 							}
 						})();
 					</script>
-					<button type="submit" class="btn btn-solid contact-form__submit">Send Message</button>
+					<button type="submit" class="btn btn-solid contact-form__submit">
+						<span class="contact-form__submit-label">Send Message</span>
+						<span class="contact-form__spinner" aria-hidden="true"></span>
+					</button>
 					<p class="contact-form__status" role="status" aria-live="polite"></p>
 				</form>
 				<script src="https://web3forms.com/client/script.js" async defer></script>
@@ -372,8 +380,8 @@
 		</div>
 	</section>
 	<footer class="site-footer">
-		<div class="footer-ticker" aria-hidden="true">
-			<div class="footer-ticker__track">
+		<div class="footer-ticker">
+			<div class="footer-ticker__track" aria-hidden="true">
 				<span class="footer-ticker__item">Professional Sports Photography</span>
 				<span class="footer-ticker__dot">&bull;</span>
 				<span class="footer-ticker__item">Highlight Reels</span>
@@ -399,6 +407,11 @@
 				<span class="footer-ticker__item">Behind-the-Scenes Content</span>
 				<span class="footer-ticker__dot">&bull;</span>
 			</div>
+			<button type="button" class="footer-ticker__pause" aria-pressed="false">
+				<svg class="footer-ticker__pause-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg>
+				<svg class="footer-ticker__play-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+				<span class="sr-only footer-ticker__pause-label">Pause scrolling ticker</span>
+			</button>
 		</div>
 		<div class="footer-main">
 			<svg class="footer-ball footer-ball--basketball" viewBox="0 0 457.541 457.541" aria-hidden="true" focusable="false">
@@ -502,9 +515,9 @@
 					</nav>
 					<nav class="footer-links__group" aria-label="Social">
 						<h3 class="footer-links__heading">Socials</h3>
-						<ul class="footer-links__list">
+							<ul class="footer-links__list">
 							<li><a href="https://www.instagram.com/thejspn.bz/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-							<li><a href="https://www.facebook.com/thejewelsportsnetwork" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+							<li><a href="https://www.facebook.com/profile.php?id=61590212313164" target="_blank" rel="noopener noreferrer">Facebook</a></li>
 							<li><a href="https://www.youtube.com/@TheJSPN" target="_blank" rel="noopener noreferrer">YouTube</a></li>
 							<li><a href="https://www.tiktok.com/@the.jspn" target="_blank" rel="noopener noreferrer">TikTok</a></li>
 						</ul>

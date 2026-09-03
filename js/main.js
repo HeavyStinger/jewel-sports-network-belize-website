@@ -30,6 +30,21 @@ document.addEventListener("DOMContentLoaded", () => {
 		copyrightYear.textContent = new Date().getFullYear();
 	}
 
+	const tickerTrack = document.querySelector(".footer-ticker__track");
+	const tickerPauseButton = document.querySelector(".footer-ticker__pause");
+
+	if (tickerTrack && tickerPauseButton) {
+		const pauseLabel = tickerPauseButton.querySelector(".footer-ticker__pause-label");
+
+		tickerPauseButton.addEventListener("click", () => {
+			const isPaused = tickerTrack.classList.toggle("is-paused");
+			tickerPauseButton.setAttribute("aria-pressed", String(isPaused));
+			if (pauseLabel) {
+				pauseLabel.textContent = isPaused ? "Resume scrolling ticker" : "Pause scrolling ticker";
+			}
+		});
+	}
+
 	const navToggle = document.querySelector(".nav-toggle");
 	const siteNav = document.querySelector(".site-nav");
 
@@ -161,7 +176,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 
 		submitButton.disabled = true;
-		statusEl.textContent = "Sending your message...";
+		submitButton.classList.add("is-loading");
+		statusEl.textContent = "Sending your message…";
 		statusEl.className = "contact-form__status";
 
 		try {
@@ -188,6 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			statusEl.classList.add("contact-form__status--error");
 		} finally {
 			submitButton.disabled = false;
+			submitButton.classList.remove("is-loading");
 		}
 	});
 });
@@ -264,5 +281,39 @@ document.addEventListener("DOMContentLoaded", () => {
 		} else if (event.key === "ArrowRight") {
 			showPhoto(currentIndex + 1);
 		}
+	});
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+	const targets = document.querySelectorAll(
+		".coverage-feature__media img, .coverage-gallery__item img, .coverage-video iframe, .coverage-social iframe"
+	);
+
+	targets.forEach((el) => {
+		const container = el.parentElement;
+
+		if (!container) {
+			return;
+		}
+
+		const skeleton = document.createElement("span");
+		skeleton.className = "skeleton";
+		skeleton.setAttribute("aria-hidden", "true");
+		el.after(skeleton);
+
+		function removeSkeleton() {
+			skeleton.classList.add("is-loaded");
+			const cleanup = () => skeleton.remove();
+			skeleton.addEventListener("transitionend", cleanup, { once: true });
+			setTimeout(cleanup, 400);
+		}
+
+		if (el.tagName === "IMG" && el.complete) {
+			removeSkeleton();
+			return;
+		}
+
+		el.addEventListener("load", removeSkeleton, { once: true });
+		el.addEventListener("error", removeSkeleton, { once: true });
 	});
 });
